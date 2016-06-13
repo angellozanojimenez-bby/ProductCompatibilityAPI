@@ -36,6 +36,14 @@ group :development do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
 end
+
+group :test do
+  gem "rspec-rails", "~> 2.14"
+  gem "factory_girl_rails"
+  gem 'ffaker'
+end
+
+gem 'test-unit'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
