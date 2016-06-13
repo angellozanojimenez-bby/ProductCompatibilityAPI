@@ -1,5 +1,12 @@
 require 'spec_helper'
 
 describe Product do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before { @product = FactoryGirl.build(:product) }
+
+  subject { @product }
+
+  it { should respond_to(:title) }
+  it { should respond_to(:maker) }
+  it { should respond_to(:sku_number) }
+
 end
