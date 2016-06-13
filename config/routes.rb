@@ -1,6 +1,9 @@
 require 'api_constraints'
 
 Productcompatibilityapi::Application.routes.draw do
+  devise_for :relations
+  devise_for :products
+  devise_for :users
   # We are placing our controllers under an API folder, so we must give The
   # routes a namespace that corresponds to the folder.
   namespace :api, defaults: { format: :json }, constraints: { subdomain: 'api' }, path: '/' do
