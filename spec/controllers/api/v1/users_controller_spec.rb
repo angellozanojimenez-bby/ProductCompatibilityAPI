@@ -14,7 +14,7 @@ describe Api::V1::UsersController do
     end
     # We expect the response within the JSON body to contain the email
     # which is associated with the user.
-    it "returns the information about a reporter on a hash" do
+    it "returns the information about a user on a hash" do
       user_response = JSON.parse(response.body, symbolize_names: true)
       expect(user_response[:email]).to eql @user.email
     end
