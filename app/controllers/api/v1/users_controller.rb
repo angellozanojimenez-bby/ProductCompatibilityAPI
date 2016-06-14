@@ -27,6 +27,12 @@ class Api::V1::UsersController < ApplicationController
     end
 
   end
+  # We find the user by the parameters passed, we then destroy the object.
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+    head 204
+  end
 
 private
   # These are the user params that are required to create a new user instance/
