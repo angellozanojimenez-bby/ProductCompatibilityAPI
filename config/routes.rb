@@ -11,7 +11,7 @@ Productcompatibilityapi::Application.routes.draw do
     # API in the future. 'scope module v1' refers to the version and directory of our current API version.
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       # This scope will contain all of our model resources.
-      resources :users, :only => [:show]
+      resources :users, :only => [:show, :create]
       resources :products, :only => [:show]
       resources :relations, :only => [:show]
     end
