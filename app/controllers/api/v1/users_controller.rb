@@ -15,6 +15,18 @@ class Api::V1::UsersController < ApplicationController
       render json: { errors: user.errors }, status: 422
     end
   end
+  # We find the user by the parameters passed, we then try to update that
+  # user using the update method and the parameters passed. If successfully
+  # updated, respond with a 200, 422 otherwise.
+  def update
+    user = User.find(params[:id])
+    if user.update(user_params)
+      render json: user, status: 200, location: [:api, user]
+    else
+      render json: { errors: user.errors }, status: 422
+    end
+
+  end
 
 private
   # These are the user params that are required to create a new user instance/

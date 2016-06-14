@@ -63,4 +63,48 @@ describe Api::V1::UsersController do
     end
   end
 
+  describe "PUT/PATCH #update" do
+
+    context "when is successfully created" do
+      # We create a fake user using FactoryGirl and then through the patch method,
+      # we update the email of the user.
+      before(:each) do
+        @user = FactoryGirl.create :user
+        patch :update, { id: @user.id, user: { email: "newemail@example.com" } }, format: :json
+      end
+      # We expect the json response to include the new email of the user that
+      # was just updated.
+      it "renders the json representation for the updated user" do
+        user_response = JSON.parse(response.body, symbolize_names: true)
+        expect(user_response[:email]).to eql "newemail@example.com"
+      end
+      # We expect a 200 response to know that we successfully updated the user.
+      it { should respond_with 200 }
+    end
+
+    context "when is not created" do
+      # We create a fake user using FactoryGirl and then through the patch method,
+      # we update the email of the user, however it is not a valid email since it
+      # does nto contain the @ symbol.
+      before(:each) do
+        @user = FactoryGirl.create :user
+        patch :update, { id: @user.id, user: { email: "bademail.com" } }, format: :json
+      end
+      # We expect our json response to contain an error.
+      it "renders an errors json" do
+        user_response = JSON.parse(response.body, symbolize_names: true)
+        expect(user_response).to have_key(:errors)
+      end
+      # We expect our json response to contain the reason why the user could
+      # not be updated/created, in this instance, it was because the email was
+      # invalid.
+      it "renders the json errors on why the user could not be created" do
+        user_response = JSON.parse(response.body, symbolize_names: true)
+        expect(user_response[:errors][:email]).to include "is invalid"
+      end
+      # We should obtain a 422 response.
+      it { should respond_with 422 }
+    end
+  end
+
 end
