@@ -45,6 +45,7 @@ end
 
 gem 'test-unit'
 gem "devise"
+gem 'neo4j'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
