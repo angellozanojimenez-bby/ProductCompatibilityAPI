@@ -1,5 +1,10 @@
 class Api::V1::RelationsController < ApplicationController
   respond_to :json
+
+  # Simple index to return all of the Relations in a query.
+  def index
+    respond_with Relation.all
+  end
   # Show will return a relation that matches the parameters passed into it.
   def show
     respond_with Relation.find(params[:id])

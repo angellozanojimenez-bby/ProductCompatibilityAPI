@@ -1,6 +1,10 @@
 class Api::V1::UsersController < ApplicationController
   respond_to :json
 
+  # Simple index to return all of the Users in a query.
+  def index
+    respond_with User.all
+  end
   # Find user by the parameters into the function.
   def show
     respond_with User.find(params[:id])

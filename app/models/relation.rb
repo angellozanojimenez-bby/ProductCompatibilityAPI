@@ -4,4 +4,5 @@ class Relation < ActiveRecord::Base
   validates :relation_type, presence: true
   validates :sku_one, numericality: { greater_than_or_equal_to: 0 }, presence: true
   validates :sku_two, numericality: { greater_than_or_equal_to: 0 }, presence: true
+  
 end
