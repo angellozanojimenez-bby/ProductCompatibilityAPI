@@ -13,7 +13,7 @@ Productcompatibilityapi::Application.routes.draw do
       # This scope will contain all of our model resources.
       resources :users, :only => [:show, :create, :update, :destroy]
       resources :products, :only => [:show, :create, :update, :destroy]
-      resources :relations, :only => [:show]
+      resources :relations, :only => [:show, :create]
     end
   end
 end
