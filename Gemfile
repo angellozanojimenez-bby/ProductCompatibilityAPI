@@ -32,15 +32,14 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-group :development do
-  # Use sqlite3 as the database for Active Record
+group :development, :test do
+  gem "factory_girl_rails"
+  gem 'ffaker'
   gem 'sqlite3'
 end
 
 group :test do
   gem "rspec-rails"
-  gem "factory_girl_rails"
-  gem 'ffaker'
   gem "shoulda-matchers"
 end
 

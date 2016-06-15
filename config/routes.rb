@@ -12,7 +12,7 @@ Productcompatibilityapi::Application.routes.draw do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       # This scope will contain all of our model resources.
       resources :users, :only => [:show, :create, :update, :destroy]
-      resources :products, :only => [:show]
+      resources :products, :only => [:show, :create, :update, :destroy]
       resources :relations, :only => [:show]
     end
   end

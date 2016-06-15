@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :product do
-    title "A big TV."
+    title { FFaker::Product.product_name }
     maker "Best Buy."
-    sku_number "1234567"
+    sku_number { rand().to_i * 100}
   end
 end

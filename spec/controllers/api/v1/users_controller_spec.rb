@@ -65,7 +65,7 @@ describe Api::V1::UsersController do
 
   describe "PUT/PATCH #update" do
 
-    context "when is successfully created" do
+    context "when is successfully updated" do
       # We create a fake user using FactoryGirl and then through the patch method,
       # we update the email of the user.
       before(:each) do
@@ -82,10 +82,10 @@ describe Api::V1::UsersController do
       it { should respond_with 200 }
     end
 
-    context "when is not created" do
+    context "when is not updated" do
       # We create a fake user using FactoryGirl and then through the patch method,
       # we update the email of the user, however it is not a valid email since it
-      # does nto contain the @ symbol.
+      # does not contain the @ symbol.
       before(:each) do
         @user = FactoryGirl.create :user
         patch :update, { id: @user.id, user: { email: "bademail.com" } }, format: :json
@@ -98,7 +98,7 @@ describe Api::V1::UsersController do
       # We expect our json response to contain the reason why the user could
       # not be updated/created, in this instance, it was because the email was
       # invalid.
-      it "renders the json errors on why the user could not be created" do
+      it "renders the json errors on why the user could not be updated" do
         user_response = JSON.parse(response.body, symbolize_names: true)
         expect(user_response[:errors][:email]).to include "is invalid"
       end

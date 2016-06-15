@@ -34,10 +34,10 @@ class Api::V1::UsersController < ApplicationController
     head 204
   end
 
-private
-  # These are the user params that are required to create a new user instance/
-  def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :employee_number)
-  end
+  private
+    # These are the user params that are required to create a new user instance/
+    def user_params
+      params.require(:user).permit(:email, :password, :password_confirmation, :employee_number)
+    end
 
 end
