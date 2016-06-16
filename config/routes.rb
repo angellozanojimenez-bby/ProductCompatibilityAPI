@@ -14,6 +14,9 @@ Productcompatibilityapi::Application.routes.draw do
       resources :users, :only => [:index, :show, :create, :update, :destroy]
       resources :products, :only => [:index, :show, :create, :update, :destroy]
       resources :relations, :only => [:index, :show, :create]
+      resources :user_nodes, :only => [:index, :show, :create, :update, :destroy]
+      resources :relationships, :only => [:index, :show, :create, :update, :destroy]
+      resources :product_nodes, :only => [:index, :show, :create, :update, :destroy]
     end
   end
 end
