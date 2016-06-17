@@ -10,10 +10,12 @@ class Relationships
 
   property :employee_number, type: Integer
   property :notes
-  property :primary_node
-  property :secondary_node
+  property :primary_node_sku, type: Integer
+  property :secondary_node_sku, type: Integer
 
   validates_presence_of :employee_number
+  validates_presence_of :primary_node
+  validates_presence_of :secondary_node
 
   def do_this
     # A callback to something.
