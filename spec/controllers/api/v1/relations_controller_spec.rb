@@ -24,7 +24,7 @@ describe Api::V1::RelationsController do
   describe "POST #create" do
     # We create a fake Relation instance using FactoryGirl and we give it attributes
     # also genereted by FactoryGirl.
-    context "when is successfully created" do
+    context "when is successfully updated" do
       before(:each) do
         @relation_attributes = FactoryGirl.attributes_for :relation
         post :create, { relation: @relation_attributes }, format: :json
@@ -41,7 +41,7 @@ describe Api::V1::RelationsController do
     # We create a Relation instance, however, we give it a series of invalid
     # attributes, in this instance, sku_two which is supposed to be a number
     # is given a string value.
-    context "when relation is not successfully created" do
+    context "when relation is not successfully updated" do
       before(:each) do
         @invalid_relation_attributes = { sku_one: 1197564, sku_two: "Hello", relation_type: "works_with"}
         post :create, { relation: @invalid_relation_attributes }, format: :json

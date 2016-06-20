@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'sqlite3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
@@ -35,7 +36,6 @@ end
 group :development, :test do
   gem "factory_girl_rails"
   gem 'ffaker'
-  gem 'sqlite3'
 end
 
 group :test do
