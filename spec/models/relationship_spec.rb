@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-describe Relationship do
-  let(:relationship) { FactoryGirl.build :relationship }
+describe Relationships do
+  let(:relationship) { FactoryGirl.build :relationships }
 
-  subject { relation }
+  subject { relationship }
 
-  it { should respond_to(:sku_one) }
-  it { should respond_to(:sku_two) }
-  it { should respond_to(:relation_type) }
+  it { should respond_to(:primary_node_sku) }
+  it { should respond_to(:secondary_node_sku) }
+  it { should respond_to(:employee_number) }
 
-  it { should validate_presence_of(:sku_one) }
-  it { should validate_presence_of(:sku_two) }
-  it { should validate_presence_of(:relation_type) }
+  it { should validate_presence_of(:primary_node_sku) }
+  it { should validate_presence_of(:secondary_node_sku) }
+  it { should validate_presence_of(:employee_number) }

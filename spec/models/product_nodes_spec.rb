@@ -3,7 +3,7 @@ require 'spec_helper'
 describe ProductNodes do
   let(:product_node) { FactoryGirl.build :product_nodes }
 
-  subject { product }
+  subject { product_node }
 
   it { should respond_to(:title) }
   it { should respond_to(:maker) }
