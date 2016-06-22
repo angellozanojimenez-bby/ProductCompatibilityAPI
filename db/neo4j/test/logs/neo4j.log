@@ -208,3 +208,277 @@ Caused by: org.neo4j.helpers.PortBindException: Address localhost:7473 is alread
 	at org.neo4j.server.AbstractNeoServer.startWebServer(AbstractNeoServer.java:316)
 	at org.neo4j.server.AbstractNeoServer.start(AbstractNeoServer.java:208)
 	... 3 more
+2016-06-22 15:45:05.512+0000 INFO  Starting...
+2016-06-22 15:45:06.111+0000 INFO  Bolt enabled on localhost:7472.
+2016-06-22 15:45:07.973+0000 INFO  Started.
+2016-06-22 15:45:08.634+0000 WARN  FAILED ServerConnector@18bdf04f{HTTP/1.1}{localhost:7474}: java.net.BindException: Address already in use Address already in use
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.eclipse.jetty.server.ServerConnector.open(ServerConnector.java:321)
+	at org.eclipse.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.eclipse.jetty.server.ServerConnector.doStart(ServerConnector.java:236)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:366)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.neo4j.server.web.Jetty9WebServer.startJetty(Jetty9WebServer.java:353)
+	at org.neo4j.server.web.Jetty9WebServer.start(Jetty9WebServer.java:168)
+	at org.neo4j.server.AbstractNeoServer.startWebServer(AbstractNeoServer.java:316)
+	at org.neo4j.server.AbstractNeoServer.start(AbstractNeoServer.java:208)
+	at org.neo4j.server.ServerBootstrapper.start(ServerBootstrapper.java:87)
+	at org.neo4j.server.ServerBootstrapper.start(ServerBootstrapper.java:66)
+	at org.neo4j.server.CommunityEntryPoint.main(CommunityEntryPoint.java:28)
+2016-06-22 15:45:08.634+0000 WARN  FAILED org.eclipse.jetty.server.Server@7c3c80fd: java.net.BindException: Address already in use Address already in use
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.eclipse.jetty.server.ServerConnector.open(ServerConnector.java:321)
+	at org.eclipse.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.eclipse.jetty.server.ServerConnector.doStart(ServerConnector.java:236)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:366)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.neo4j.server.web.Jetty9WebServer.startJetty(Jetty9WebServer.java:353)
+	at org.neo4j.server.web.Jetty9WebServer.start(Jetty9WebServer.java:168)
+	at org.neo4j.server.AbstractNeoServer.startWebServer(AbstractNeoServer.java:316)
+	at org.neo4j.server.AbstractNeoServer.start(AbstractNeoServer.java:208)
+	at org.neo4j.server.ServerBootstrapper.start(ServerBootstrapper.java:87)
+	at org.neo4j.server.ServerBootstrapper.start(ServerBootstrapper.java:66)
+	at org.neo4j.server.CommunityEntryPoint.main(CommunityEntryPoint.java:28)
+2016-06-22 15:45:08.634+0000 ERROR Failed to start Neo4j on localhost:7474: Address localhost:7474 is already in use, cannot bind to it.
+2016-06-22 15:45:08.634+0000 INFO  Stopping...
+2016-06-22 15:45:08.658+0000 INFO  Stopped.
+2016-06-22 15:45:08.659+0000 ERROR Failed to start Neo4j: Starting Neo4j failed: Address localhost:7474 is already in use, cannot bind to it. Starting Neo4j failed: Address localhost:7474 is already in use, cannot bind to it.
+org.neo4j.server.ServerStartupException: Starting Neo4j failed: Address localhost:7474 is already in use, cannot bind to it.
+	at org.neo4j.server.exception.ServerStartupErrors.translateToServerStartupError(ServerStartupErrors.java:68)
+	at org.neo4j.server.AbstractNeoServer.start(AbstractNeoServer.java:217)
+	at org.neo4j.server.ServerBootstrapper.start(ServerBootstrapper.java:87)
+	at org.neo4j.server.ServerBootstrapper.start(ServerBootstrapper.java:66)
+	at org.neo4j.server.CommunityEntryPoint.main(CommunityEntryPoint.java:28)
+Caused by: org.neo4j.helpers.PortBindException: Address localhost:7474 is already in use, cannot bind to it.
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.eclipse.jetty.server.ServerConnector.open(ServerConnector.java:321)
+	at org.eclipse.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.eclipse.jetty.server.ServerConnector.doStart(ServerConnector.java:236)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:366)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.neo4j.server.web.Jetty9WebServer.startJetty(Jetty9WebServer.java:353)
+	at org.neo4j.server.web.Jetty9WebServer.start(Jetty9WebServer.java:168)
+	at org.neo4j.server.AbstractNeoServer.startWebServer(AbstractNeoServer.java:316)
+	at org.neo4j.server.AbstractNeoServer.start(AbstractNeoServer.java:208)
+	... 3 more
+2016-06-22 15:46:10.232+0000 INFO  Starting...
+2016-06-22 15:46:10.833+0000 INFO  Bolt enabled on localhost:7473.
+2016-06-22 15:46:11.683+0000 ERROR Failed to start Neo4j: Starting Neo4j failed: Component 'org.neo4j.server.database.LifecycleManagingDatabase@2d68150c' was successfully initialized, but failed to start. Please see attached cause exception. Starting Neo4j failed: Component 'org.neo4j.server.database.LifecycleManagingDatabase@2d68150c' was successfully initialized, but failed to start. Please see attached cause exception.
+org.neo4j.server.ServerStartupException: Starting Neo4j failed: Component 'org.neo4j.server.database.LifecycleManagingDatabase@2d68150c' was successfully initialized, but failed to start. Please see attached cause exception.
+	at org.neo4j.server.exception.ServerStartupErrors.translateToServerStartupError(ServerStartupErrors.java:68)
+	at org.neo4j.server.AbstractNeoServer.start(AbstractNeoServer.java:217)
+	at org.neo4j.server.ServerBootstrapper.start(ServerBootstrapper.java:87)
+	at org.neo4j.server.ServerBootstrapper.start(ServerBootstrapper.java:66)
+	at org.neo4j.server.CommunityEntryPoint.main(CommunityEntryPoint.java:28)
+Caused by: org.neo4j.kernel.lifecycle.LifecycleException: Component 'org.neo4j.server.database.LifecycleManagingDatabase@2d68150c' was successfully initialized, but failed to start. Please see attached cause exception.
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:444)
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:107)
+	at org.neo4j.server.AbstractNeoServer.start(AbstractNeoServer.java:189)
+	... 3 more
+Caused by: java.lang.RuntimeException: Error starting org.neo4j.kernel.impl.factory.CommunityFacadeFactory, /Users/a1197564/Desktop/ProductCompatibilityAPI/productcompatibilityapi/db/neo4j/test/data/databases/graph.db
+	at org.neo4j.kernel.impl.factory.GraphDatabaseFacadeFactory.newFacade(GraphDatabaseFacadeFactory.java:144)
+	at org.neo4j.kernel.impl.factory.CommunityFacadeFactory.newFacade(CommunityFacadeFactory.java:40)
+	at org.neo4j.kernel.impl.factory.GraphDatabaseFacadeFactory.newFacade(GraphDatabaseFacadeFactory.java:108)
+	at org.neo4j.server.CommunityNeoServer.lambda$static$31(CommunityNeoServer.java:55)
+	at org.neo4j.server.database.LifecycleManagingDatabase.start(LifecycleManagingDatabase.java:89)
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:434)
+	... 5 more
+Caused by: org.neo4j.kernel.lifecycle.LifecycleException: Component 'org.neo4j.bolt.transport.NettyServer@40c77bf6' was successfully initialized, but failed to start. Please see attached cause exception.
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:444)
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:107)
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:434)
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:107)
+	at org.neo4j.kernel.extension.KernelExtensions.start(KernelExtensions.java:86)
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:434)
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:107)
+	at org.neo4j.kernel.impl.factory.GraphDatabaseFacadeFactory.newFacade(GraphDatabaseFacadeFactory.java:140)
+	... 10 more
+Caused by: org.neo4j.helpers.PortBindException: Address localhost:7473 is already in use, cannot bind to it.
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at io.netty.channel.socket.nio.NioServerSocketChannel.doBind(NioServerSocketChannel.java:125)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.bind(AbstractChannel.java:485)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.bind(DefaultChannelPipeline.java:1089)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeBind(AbstractChannelHandlerContext.java:430)
+	at io.netty.channel.AbstractChannelHandlerContext.bind(AbstractChannelHandlerContext.java:415)
+	at io.netty.channel.DefaultChannelPipeline.bind(DefaultChannelPipeline.java:903)
+	at io.netty.channel.AbstractChannel.bind(AbstractChannel.java:198)
+	at io.netty.bootstrap.AbstractBootstrap$2.run(AbstractBootstrap.java:348)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:357)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:357)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:111)
+	at java.lang.Thread.run(Thread.java:745)
+2016-06-22 15:47:31.968+0000 INFO  Starting...
+2016-06-22 15:47:32.582+0000 INFO  Bolt enabled on localhost:7473.
+2016-06-22 15:47:33.437+0000 ERROR Failed to start Neo4j: Starting Neo4j failed: Component 'org.neo4j.server.database.LifecycleManagingDatabase@2d68150c' was successfully initialized, but failed to start. Please see attached cause exception. Starting Neo4j failed: Component 'org.neo4j.server.database.LifecycleManagingDatabase@2d68150c' was successfully initialized, but failed to start. Please see attached cause exception.
+org.neo4j.server.ServerStartupException: Starting Neo4j failed: Component 'org.neo4j.server.database.LifecycleManagingDatabase@2d68150c' was successfully initialized, but failed to start. Please see attached cause exception.
+	at org.neo4j.server.exception.ServerStartupErrors.translateToServerStartupError(ServerStartupErrors.java:68)
+	at org.neo4j.server.AbstractNeoServer.start(AbstractNeoServer.java:217)
+	at org.neo4j.server.ServerBootstrapper.start(ServerBootstrapper.java:87)
+	at org.neo4j.server.ServerBootstrapper.start(ServerBootstrapper.java:66)
+	at org.neo4j.server.CommunityEntryPoint.main(CommunityEntryPoint.java:28)
+Caused by: org.neo4j.kernel.lifecycle.LifecycleException: Component 'org.neo4j.server.database.LifecycleManagingDatabase@2d68150c' was successfully initialized, but failed to start. Please see attached cause exception.
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:444)
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:107)
+	at org.neo4j.server.AbstractNeoServer.start(AbstractNeoServer.java:189)
+	... 3 more
+Caused by: java.lang.RuntimeException: Error starting org.neo4j.kernel.impl.factory.CommunityFacadeFactory, /Users/a1197564/Desktop/ProductCompatibilityAPI/productcompatibilityapi/db/neo4j/test/data/databases/graph.db
+	at org.neo4j.kernel.impl.factory.GraphDatabaseFacadeFactory.newFacade(GraphDatabaseFacadeFactory.java:144)
+	at org.neo4j.kernel.impl.factory.CommunityFacadeFactory.newFacade(CommunityFacadeFactory.java:40)
+	at org.neo4j.kernel.impl.factory.GraphDatabaseFacadeFactory.newFacade(GraphDatabaseFacadeFactory.java:108)
+	at org.neo4j.server.CommunityNeoServer.lambda$static$31(CommunityNeoServer.java:55)
+	at org.neo4j.server.database.LifecycleManagingDatabase.start(LifecycleManagingDatabase.java:89)
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:434)
+	... 5 more
+Caused by: org.neo4j.kernel.lifecycle.LifecycleException: Component 'org.neo4j.bolt.transport.NettyServer@40c77bf6' was successfully initialized, but failed to start. Please see attached cause exception.
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:444)
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:107)
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:434)
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:107)
+	at org.neo4j.kernel.extension.KernelExtensions.start(KernelExtensions.java:86)
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:434)
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:107)
+	at org.neo4j.kernel.impl.factory.GraphDatabaseFacadeFactory.newFacade(GraphDatabaseFacadeFactory.java:140)
+	... 10 more
+Caused by: org.neo4j.helpers.PortBindException: Address localhost:7473 is already in use, cannot bind to it.
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at io.netty.channel.socket.nio.NioServerSocketChannel.doBind(NioServerSocketChannel.java:125)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.bind(AbstractChannel.java:485)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.bind(DefaultChannelPipeline.java:1089)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeBind(AbstractChannelHandlerContext.java:430)
+	at io.netty.channel.AbstractChannelHandlerContext.bind(AbstractChannelHandlerContext.java:415)
+	at io.netty.channel.DefaultChannelPipeline.bind(DefaultChannelPipeline.java:903)
+	at io.netty.channel.AbstractChannel.bind(AbstractChannel.java:198)
+	at io.netty.bootstrap.AbstractBootstrap$2.run(AbstractBootstrap.java:348)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:357)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:357)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:111)
+	at java.lang.Thread.run(Thread.java:745)
+2016-06-22 15:51:16.604+0000 INFO  Starting...
+2016-06-22 15:51:17.200+0000 INFO  Bolt enabled on localhost:7473.
+2016-06-22 15:51:18.096+0000 ERROR Failed to start Neo4j: Starting Neo4j failed: Component 'org.neo4j.server.database.LifecycleManagingDatabase@2d68150c' was successfully initialized, but failed to start. Please see attached cause exception. Starting Neo4j failed: Component 'org.neo4j.server.database.LifecycleManagingDatabase@2d68150c' was successfully initialized, but failed to start. Please see attached cause exception.
+org.neo4j.server.ServerStartupException: Starting Neo4j failed: Component 'org.neo4j.server.database.LifecycleManagingDatabase@2d68150c' was successfully initialized, but failed to start. Please see attached cause exception.
+	at org.neo4j.server.exception.ServerStartupErrors.translateToServerStartupError(ServerStartupErrors.java:68)
+	at org.neo4j.server.AbstractNeoServer.start(AbstractNeoServer.java:217)
+	at org.neo4j.server.ServerBootstrapper.start(ServerBootstrapper.java:87)
+	at org.neo4j.server.ServerBootstrapper.start(ServerBootstrapper.java:66)
+	at org.neo4j.server.CommunityEntryPoint.main(CommunityEntryPoint.java:28)
+Caused by: org.neo4j.kernel.lifecycle.LifecycleException: Component 'org.neo4j.server.database.LifecycleManagingDatabase@2d68150c' was successfully initialized, but failed to start. Please see attached cause exception.
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:444)
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:107)
+	at org.neo4j.server.AbstractNeoServer.start(AbstractNeoServer.java:189)
+	... 3 more
+Caused by: java.lang.RuntimeException: Error starting org.neo4j.kernel.impl.factory.CommunityFacadeFactory, /Users/a1197564/Desktop/ProductCompatibilityAPI/productcompatibilityapi/db/neo4j/test/data/databases/graph.db
+	at org.neo4j.kernel.impl.factory.GraphDatabaseFacadeFactory.newFacade(GraphDatabaseFacadeFactory.java:144)
+	at org.neo4j.kernel.impl.factory.CommunityFacadeFactory.newFacade(CommunityFacadeFactory.java:40)
+	at org.neo4j.kernel.impl.factory.GraphDatabaseFacadeFactory.newFacade(GraphDatabaseFacadeFactory.java:108)
+	at org.neo4j.server.CommunityNeoServer.lambda$static$31(CommunityNeoServer.java:55)
+	at org.neo4j.server.database.LifecycleManagingDatabase.start(LifecycleManagingDatabase.java:89)
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:434)
+	... 5 more
+Caused by: org.neo4j.kernel.lifecycle.LifecycleException: Component 'org.neo4j.bolt.transport.NettyServer@40c77bf6' was successfully initialized, but failed to start. Please see attached cause exception.
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:444)
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:107)
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:434)
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:107)
+	at org.neo4j.kernel.extension.KernelExtensions.start(KernelExtensions.java:86)
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:434)
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:107)
+	at org.neo4j.kernel.impl.factory.GraphDatabaseFacadeFactory.newFacade(GraphDatabaseFacadeFactory.java:140)
+	... 10 more
+Caused by: org.neo4j.helpers.PortBindException: Address localhost:7473 is already in use, cannot bind to it.
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at io.netty.channel.socket.nio.NioServerSocketChannel.doBind(NioServerSocketChannel.java:125)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.bind(AbstractChannel.java:485)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.bind(DefaultChannelPipeline.java:1089)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeBind(AbstractChannelHandlerContext.java:430)
+	at io.netty.channel.AbstractChannelHandlerContext.bind(AbstractChannelHandlerContext.java:415)
+	at io.netty.channel.DefaultChannelPipeline.bind(DefaultChannelPipeline.java:903)
+	at io.netty.channel.AbstractChannel.bind(AbstractChannel.java:198)
+	at io.netty.bootstrap.AbstractBootstrap$2.run(AbstractBootstrap.java:348)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:357)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:357)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:111)
+	at java.lang.Thread.run(Thread.java:745)
+2016-06-22 15:57:08.634+0000 INFO  Starting...
+2016-06-22 15:57:09.255+0000 INFO  Bolt enabled on localhost:7473.
+2016-06-22 15:57:10.149+0000 ERROR Failed to start Neo4j: Starting Neo4j failed: Component 'org.neo4j.server.database.LifecycleManagingDatabase@2d68150c' was successfully initialized, but failed to start. Please see attached cause exception. Starting Neo4j failed: Component 'org.neo4j.server.database.LifecycleManagingDatabase@2d68150c' was successfully initialized, but failed to start. Please see attached cause exception.
+org.neo4j.server.ServerStartupException: Starting Neo4j failed: Component 'org.neo4j.server.database.LifecycleManagingDatabase@2d68150c' was successfully initialized, but failed to start. Please see attached cause exception.
+	at org.neo4j.server.exception.ServerStartupErrors.translateToServerStartupError(ServerStartupErrors.java:68)
+	at org.neo4j.server.AbstractNeoServer.start(AbstractNeoServer.java:217)
+	at org.neo4j.server.ServerBootstrapper.start(ServerBootstrapper.java:87)
+	at org.neo4j.server.ServerBootstrapper.start(ServerBootstrapper.java:66)
+	at org.neo4j.server.CommunityEntryPoint.main(CommunityEntryPoint.java:28)
+Caused by: org.neo4j.kernel.lifecycle.LifecycleException: Component 'org.neo4j.server.database.LifecycleManagingDatabase@2d68150c' was successfully initialized, but failed to start. Please see attached cause exception.
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:444)
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:107)
+	at org.neo4j.server.AbstractNeoServer.start(AbstractNeoServer.java:189)
+	... 3 more
+Caused by: java.lang.RuntimeException: Error starting org.neo4j.kernel.impl.factory.CommunityFacadeFactory, /Users/a1197564/Desktop/ProductCompatibilityAPI/productcompatibilityapi/db/neo4j/test/data/databases/graph.db
+	at org.neo4j.kernel.impl.factory.GraphDatabaseFacadeFactory.newFacade(GraphDatabaseFacadeFactory.java:144)
+	at org.neo4j.kernel.impl.factory.CommunityFacadeFactory.newFacade(CommunityFacadeFactory.java:40)
+	at org.neo4j.kernel.impl.factory.GraphDatabaseFacadeFactory.newFacade(GraphDatabaseFacadeFactory.java:108)
+	at org.neo4j.server.CommunityNeoServer.lambda$static$31(CommunityNeoServer.java:55)
+	at org.neo4j.server.database.LifecycleManagingDatabase.start(LifecycleManagingDatabase.java:89)
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:434)
+	... 5 more
+Caused by: org.neo4j.kernel.lifecycle.LifecycleException: Component 'org.neo4j.bolt.transport.NettyServer@40c77bf6' was successfully initialized, but failed to start. Please see attached cause exception.
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:444)
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:107)
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:434)
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:107)
+	at org.neo4j.kernel.extension.KernelExtensions.start(KernelExtensions.java:86)
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:434)
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:107)
+	at org.neo4j.kernel.impl.factory.GraphDatabaseFacadeFactory.newFacade(GraphDatabaseFacadeFactory.java:140)
+	... 10 more
+Caused by: org.neo4j.helpers.PortBindException: Address localhost:7473 is already in use, cannot bind to it.
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at io.netty.channel.socket.nio.NioServerSocketChannel.doBind(NioServerSocketChannel.java:125)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.bind(AbstractChannel.java:485)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.bind(DefaultChannelPipeline.java:1089)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeBind(AbstractChannelHandlerContext.java:430)
+	at io.netty.channel.AbstractChannelHandlerContext.bind(AbstractChannelHandlerContext.java:415)
+	at io.netty.channel.DefaultChannelPipeline.bind(DefaultChannelPipeline.java:903)
+	at io.netty.channel.AbstractChannel.bind(AbstractChannel.java:198)
+	at io.netty.bootstrap.AbstractBootstrap$2.run(AbstractBootstrap.java:348)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:357)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:357)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:111)
+	at java.lang.Thread.run(Thread.java:745)
+2016-06-22 16:00:33.772+0000 INFO  Starting...
+2016-06-22 16:00:34.372+0000 INFO  Bolt enabled on localhost:7473.
+2016-06-22 16:00:36.286+0000 INFO  Started.
+2016-06-22 16:00:37.019+0000 INFO  Remote interface available at http://localhost:7475/
