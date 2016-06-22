@@ -482,3 +482,97 @@ Caused by: org.neo4j.helpers.PortBindException: Address localhost:7473 is alread
 2016-06-22 16:00:34.372+0000 INFO  Bolt enabled on localhost:7473.
 2016-06-22 16:00:36.286+0000 INFO  Started.
 2016-06-22 16:00:37.019+0000 INFO  Remote interface available at http://localhost:7475/
+2016-06-22 18:01:21.580+0000 INFO  Neo4j Server shutdown initiated by request
+2016-06-22 18:01:21.589+0000 INFO  Stopping...
+Exception in thread "Thread-15" java.lang.RuntimeException: org.neo4j.kernel.lifecycle.LifecycleException: Failed to transition component 'org.neo4j.kernel.impl.storageengine.impl.recordstorage.RecordStorageEngine@925981a' from STOPPED to SHUTTING_DOWN. Please see attached cause exception
+	at org.neo4j.helpers.RunCarefully.run(RunCarefully.java:57)
+	at org.neo4j.server.AbstractNeoServer.stop(AbstractNeoServer.java:436)
+	at org.neo4j.server.ServerBootstrapper$1.run(ServerBootstrapper.java:176)
+Caused by: org.neo4j.kernel.lifecycle.LifecycleException: Failed to transition component 'org.neo4j.kernel.impl.storageengine.impl.recordstorage.RecordStorageEngine@925981a' from STOPPED to SHUTTING_DOWN. Please see attached cause exception
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.shutdown(LifeSupport.java:497)
+	at org.neo4j.kernel.lifecycle.LifeSupport.shutdown(LifeSupport.java:206)
+	at org.neo4j.kernel.NeoStoreDataSource.stop(NeoStoreDataSource.java:898)
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.stop(LifeSupport.java:458)
+	at org.neo4j.kernel.lifecycle.LifeSupport.stopInstances(LifeSupport.java:161)
+	at org.neo4j.kernel.lifecycle.LifeSupport.stop(LifeSupport.java:143)
+	at org.neo4j.kernel.impl.transaction.state.DataSourceManager.stop(DataSourceManager.java:119)
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.stop(LifeSupport.java:458)
+	at org.neo4j.kernel.lifecycle.LifeSupport.stopInstances(LifeSupport.java:161)
+	at org.neo4j.kernel.lifecycle.LifeSupport.stop(LifeSupport.java:143)
+	at org.neo4j.kernel.lifecycle.LifeSupport.shutdown(LifeSupport.java:191)
+	at org.neo4j.kernel.impl.factory.ClassicCoreSPI.shutdown(ClassicCoreSPI.java:158)
+	at org.neo4j.kernel.impl.factory.GraphDatabaseFacade.shutdown(GraphDatabaseFacade.java:324)
+	at org.neo4j.server.database.LifecycleManagingDatabase.stop(LifecycleManagingDatabase.java:106)
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.stop(LifeSupport.java:458)
+	at org.neo4j.kernel.lifecycle.LifeSupport.stopInstances(LifeSupport.java:161)
+	at org.neo4j.kernel.lifecycle.LifeSupport.stop(LifeSupport.java:143)
+	at org.neo4j.helpers.RunCarefully.run(RunCarefully.java:47)
+	... 2 more
+	Suppressed: org.neo4j.kernel.lifecycle.LifecycleException: Failed to transition component 'org.neo4j.kernel.impl.pagecache.PageCacheLifecycle@3572d582' from STOPPED to SHUTTING_DOWN. Please see attached cause exception
+		at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.shutdown(LifeSupport.java:497)
+		at org.neo4j.kernel.lifecycle.LifeSupport.shutdown(LifeSupport.java:206)
+		... 9 more
+	Caused by: java.lang.IllegalStateException: Cannot close the PageCache while files are still mapped:
+	neostore (1 mapping)
+	neostore.counts.db.a (1 mapping)
+	neostore.relationshipgroupstore.db (1 mapping)
+	neostore.schemastore.db (1 mapping)
+	neostore.labeltokenstore.db (1 mapping)
+	neostore.labeltokenstore.db.names (1 mapping)
+	neostore.relationshiptypestore.db (1 mapping)
+	neostore.relationshiptypestore.db.names (1 mapping)
+	neostore.relationshipstore.db (1 mapping)
+	neostore.propertystore.db (1 mapping)
+	neostore.propertystore.db.arrays (1 mapping)
+	neostore.propertystore.db.strings (1 mapping)
+	neostore.propertystore.db.index (1 mapping)
+	neostore.propertystore.db.index.keys (1 mapping)
+	neostore.nodestore.db (1 mapping)
+	neostore.nodestore.db.labels (1 mapping)
+		at org.neo4j.io.pagecache.impl.muninn.MuninnPageCache.close(MuninnPageCache.java:539)
+		at org.neo4j.kernel.impl.pagecache.PageCacheLifecycle.shutdown(PageCacheLifecycle.java:42)
+		at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.shutdown(LifeSupport.java:489)
+		... 10 more
+Caused by: java.io.IOException: Exception closing multiple resources
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.neo4j.io.IOUtils.newThrowable(IOUtils.java:148)
+	at org.neo4j.io.IOUtils.closeAll(IOUtils.java:139)
+	at org.neo4j.io.IOUtils.closeAll(IOUtils.java:79)
+	at org.neo4j.io.IOUtils.closeAll(IOUtils.java:45)
+	at org.neo4j.kernel.api.impl.index.AbstractLuceneIndex.close(AbstractLuceneIndex.java:218)
+	at org.neo4j.kernel.api.impl.labelscan.LuceneLabelScanStore.shutdown(LuceneLabelScanStore.java:203)
+	at org.neo4j.kernel.impl.storageengine.impl.recordstorage.RecordStorageEngine.shutdown(RecordStorageEngine.java:452)
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.shutdown(LifeSupport.java:489)
+	... 19 more
+Caused by: java.io.IOException: Exception closing multiple resources
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.neo4j.io.IOUtils.newThrowable(IOUtils.java:148)
+	at org.neo4j.io.IOUtils.closeAll(IOUtils.java:139)
+	at org.neo4j.io.IOUtils.closeAll(IOUtils.java:79)
+	at org.neo4j.kernel.api.impl.index.partition.IndexPartition.close(IndexPartition.java:93)
+	at org.neo4j.io.IOUtils.closeAll(IOUtils.java:122)
+	... 25 more
+Caused by: java.nio.file.NoSuchFileException: /Users/a1197564/Desktop/ProductCompatibilityAPI/productcompatibilityapi/db/neo4j/test/data/databases/graph.db/schema/label/lucene/labelStore/1
+	at sun.nio.fs.UnixException.translateToIOException(UnixException.java:86)
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102)
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:107)
+	at sun.nio.fs.UnixPath.toRealPath(UnixPath.java:837)
+	at org.apache.lucene.util.IOUtils.spins(IOUtils.java:440)
+	at org.apache.lucene.util.IOUtils.spins(IOUtils.java:423)
+	at org.apache.lucene.index.ConcurrentMergeScheduler.initDynamicDefaults(ConcurrentMergeScheduler.java:376)
+	at org.apache.lucene.index.ConcurrentMergeScheduler.merge(ConcurrentMergeScheduler.java:464)
+	at org.apache.lucene.index.IndexWriter.waitForMerges(IndexWriter.java:2294)
+	at org.apache.lucene.index.IndexWriter.shutdown(IndexWriter.java:1081)
+	at org.apache.lucene.index.IndexWriter.close(IndexWriter.java:1125)
+	at org.neo4j.io.IOUtils.closeAll(IOUtils.java:122)
+	... 28 more
+2016-06-22 18:01:23.081+0000 INFO  Starting...
+2016-06-22 18:01:23.673+0000 INFO  Bolt enabled on localhost:7473.
+2016-06-22 18:01:25.992+0000 INFO  Started.
+2016-06-22 18:01:26.674+0000 INFO  Remote interface available at http://localhost:7475/

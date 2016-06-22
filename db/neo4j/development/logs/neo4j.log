@@ -193,3 +193,81 @@ Caused by: org.neo4j.helpers.PortBindException: Address localhost:7473 is alread
 2016-06-22 16:00:15.489+0000 INFO  Bolt enabled on localhost:7472.
 2016-06-22 16:00:17.329+0000 INFO  Started.
 2016-06-22 16:00:18.016+0000 INFO  Remote interface available at http://localhost:7474/
+2016-06-22 18:01:31.549+0000 INFO  Neo4j Server shutdown initiated by request
+2016-06-22 18:01:31.557+0000 INFO  Stopping...
+Exception in thread "Thread-15" java.lang.RuntimeException: org.neo4j.kernel.lifecycle.LifecycleException: Component 'org.neo4j.kernel.NeoStoreDataSource@25423ed5' failed to stop. Please see attached cause exception.
+	at org.neo4j.helpers.RunCarefully.run(RunCarefully.java:57)
+	at org.neo4j.server.AbstractNeoServer.stop(AbstractNeoServer.java:436)
+	at org.neo4j.server.ServerBootstrapper$1.run(ServerBootstrapper.java:176)
+Caused by: org.neo4j.kernel.lifecycle.LifecycleException: Component 'org.neo4j.kernel.NeoStoreDataSource@25423ed5' failed to stop. Please see attached cause exception.
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.stop(LifeSupport.java:466)
+	at org.neo4j.kernel.lifecycle.LifeSupport.stopInstances(LifeSupport.java:161)
+	at org.neo4j.kernel.lifecycle.LifeSupport.stop(LifeSupport.java:143)
+	at org.neo4j.kernel.impl.transaction.state.DataSourceManager.stop(DataSourceManager.java:119)
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.stop(LifeSupport.java:458)
+	at org.neo4j.kernel.lifecycle.LifeSupport.stopInstances(LifeSupport.java:161)
+	at org.neo4j.kernel.lifecycle.LifeSupport.stop(LifeSupport.java:143)
+	at org.neo4j.kernel.lifecycle.LifeSupport.shutdown(LifeSupport.java:191)
+	at org.neo4j.kernel.impl.factory.ClassicCoreSPI.shutdown(ClassicCoreSPI.java:158)
+	at org.neo4j.kernel.impl.factory.GraphDatabaseFacade.shutdown(GraphDatabaseFacade.java:324)
+	at org.neo4j.server.database.LifecycleManagingDatabase.stop(LifecycleManagingDatabase.java:106)
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.stop(LifeSupport.java:458)
+	at org.neo4j.kernel.lifecycle.LifeSupport.stopInstances(LifeSupport.java:161)
+	at org.neo4j.kernel.lifecycle.LifeSupport.stop(LifeSupport.java:143)
+	at org.neo4j.helpers.RunCarefully.run(RunCarefully.java:47)
+	... 2 more
+	Suppressed: org.neo4j.kernel.lifecycle.LifecycleException: Failed to transition component 'org.neo4j.kernel.impl.pagecache.PageCacheLifecycle@716663b' from STOPPED to SHUTTING_DOWN. Please see attached cause exception
+		at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.shutdown(LifeSupport.java:497)
+		at org.neo4j.kernel.lifecycle.LifeSupport.shutdown(LifeSupport.java:206)
+		... 9 more
+	Caused by: java.lang.IllegalStateException: Cannot close the PageCache while files are still mapped:
+	neostore.counts.db.b (1 mapping)
+	neostore (1 mapping)
+	neostore.relationshipgroupstore.db (1 mapping)
+	neostore.schemastore.db (1 mapping)
+	neostore.labeltokenstore.db (1 mapping)
+	neostore.labeltokenstore.db.names (1 mapping)
+	neostore.relationshiptypestore.db (1 mapping)
+	neostore.relationshiptypestore.db.names (1 mapping)
+	neostore.relationshipstore.db (1 mapping)
+	neostore.propertystore.db (1 mapping)
+	neostore.propertystore.db.arrays (1 mapping)
+	neostore.propertystore.db.strings (1 mapping)
+	neostore.propertystore.db.index (1 mapping)
+	neostore.propertystore.db.index.keys (1 mapping)
+	neostore.nodestore.db (1 mapping)
+	neostore.nodestore.db.labels (1 mapping)
+		at org.neo4j.io.pagecache.impl.muninn.MuninnPageCache.close(MuninnPageCache.java:539)
+		at org.neo4j.kernel.impl.pagecache.PageCacheLifecycle.shutdown(PageCacheLifecycle.java:42)
+		at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.shutdown(LifeSupport.java:489)
+		... 10 more
+Caused by: org.neo4j.kernel.impl.store.UnderlyingStorageException: java.nio.file.NoSuchFileException: /Users/a1197564/Desktop/ProductCompatibilityAPI/productcompatibilityapi/db/neo4j/development/data/databases/graph.db/schema/label/lucene/labelStore/1/write.lock
+	at org.neo4j.kernel.api.impl.labelscan.LuceneLabelScanStore.force(LuceneLabelScanStore.java:117)
+	at org.neo4j.kernel.impl.storageengine.impl.recordstorage.RecordStorageEngine.flushAndForce(RecordStorageEngine.java:461)
+	at org.neo4j.kernel.impl.transaction.log.checkpoint.CheckPointerImpl.doCheckPoint(CheckPointerImpl.java:203)
+	at org.neo4j.kernel.impl.transaction.log.checkpoint.CheckPointerImpl.forceCheckPoint(CheckPointerImpl.java:114)
+	at org.neo4j.kernel.NeoStoreDataSource.stop(NeoStoreDataSource.java:889)
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.stop(LifeSupport.java:458)
+	... 16 more
+Caused by: java.nio.file.NoSuchFileException: /Users/a1197564/Desktop/ProductCompatibilityAPI/productcompatibilityapi/db/neo4j/development/data/databases/graph.db/schema/label/lucene/labelStore/1/write.lock
+	at sun.nio.fs.UnixException.translateToIOException(UnixException.java:86)
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102)
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:107)
+	at sun.nio.fs.UnixFileAttributeViews$Basic.readAttributes(UnixFileAttributeViews.java:55)
+	at sun.nio.fs.UnixFileSystemProvider.readAttributes(UnixFileSystemProvider.java:144)
+	at java.nio.file.Files.readAttributes(Files.java:1737)
+	at org.apache.lucene.store.NativeFSLockFactory$NativeFSLock.ensureValid(NativeFSLockFactory.java:177)
+	at org.apache.lucene.store.LockValidatingDirectoryWrapper.createOutput(LockValidatingDirectoryWrapper.java:43)
+	at org.apache.lucene.index.SegmentInfos.write(SegmentInfos.java:516)
+	at org.apache.lucene.index.SegmentInfos.prepareCommit(SegmentInfos.java:809)
+	at org.apache.lucene.index.IndexWriter.startCommit(IndexWriter.java:4418)
+	at org.apache.lucene.index.IndexWriter.prepareCommitInternal(IndexWriter.java:2860)
+	at org.apache.lucene.index.IndexWriter.commitInternal(IndexWriter.java:2963)
+	at org.apache.lucene.index.IndexWriter.commit(IndexWriter.java:2930)
+	at org.neo4j.kernel.api.impl.index.AbstractLuceneIndex.flush(AbstractLuceneIndex.java:203)
+	at org.neo4j.kernel.api.impl.labelscan.LuceneLabelScanStore.force(LuceneLabelScanStore.java:112)
+	... 21 more
+2016-06-22 18:01:33.041+0000 INFO  Starting...
+2016-06-22 18:01:33.639+0000 INFO  Bolt enabled on localhost:7472.
+2016-06-22 18:01:35.980+0000 INFO  Started.
+2016-06-22 18:01:36.650+0000 INFO  Remote interface available at http://localhost:7474/
