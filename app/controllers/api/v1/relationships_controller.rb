@@ -1,6 +1,7 @@
 class Api::V1::RelationshipsController < ApplicationController
   respond_to :json
-
+  # These methods take care of handling the creation, showing, updating and deletion
+  # of the relationships in Neo4j.
   def index
     respond_with Relationships.all
   end
@@ -18,27 +19,15 @@ class Api::V1::RelationshipsController < ApplicationController
   # end
 
   def create
-    relationship = Relationships.new(relationship_params)
-    if relationship.save
-      render json: relationship, status: 201, location: [:api, relationship]
-    else
-      render json: { errors: relationship.errors }, status: 422
-    end
+
   end
 
   def update
-    relationship = Relationships.find(params[:id])
-    if relationship.update(relationship_params)
-      render json: relationship, status: 200, location: [:api, relationship]
-    else
-      render json: { errors: relationship.errors }, status: 422
-    end
+
   end
 
   def destroy
-    relationship = Relationships.find(params[:id])
-    relationship.destroy
-    head 204
+
   end
 
   private

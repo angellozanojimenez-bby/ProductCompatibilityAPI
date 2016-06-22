@@ -41,6 +41,7 @@ end
 group :test do
   gem "rspec-rails"
   gem "shoulda-matchers"
+  gem "database_cleaner"
 end
 
 gem 'test-unit'

@@ -1,6 +1,7 @@
 class Api::V1::UserNodesController < ApplicationController
   respond_to :json
-
+  # These methods take care of handling the creation, showing, updating and deletion 
+  # of the user nodes in Neo4j.
   def index
     respond_with UserNodes.all
   end
