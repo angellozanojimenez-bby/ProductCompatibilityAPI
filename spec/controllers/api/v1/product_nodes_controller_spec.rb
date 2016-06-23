@@ -15,7 +15,7 @@ describe Api::V1::ProductNodesController do
     # We expect our JSON response to contain the title of the product node
     # which was just created.
     it "returns the information of a product on a hash" do
-      product_node_response = JSON.parse(response.body, symbolize_names: true)
+      product_node_response = json_response
       expect(product_node_response[:product_nodes][:title]).to eql @product_node.title
     end
     # We expect a 200 response, meaning that everything was successful.
@@ -35,7 +35,7 @@ describe Api::V1::ProductNodesController do
       # We expect our JSON response to contain the title of the product node
       # just created.
       it "renders the json representation for the product node just created" do
-        product_node_response = JSON.parse(response.body, symbolize_names: true)
+        product_node_response = json_response
         expect(product_node_response[:product_nodes][:title]).to eql @product_node_attributes[:title]
       end
       # We expect a 201 response meaning that everything went well and the node was
@@ -52,13 +52,13 @@ describe Api::V1::ProductNodesController do
       end
       # We expect our JSON response to catch that we have errors.
       it "renders an errors json" do
-        product_node_response = JSON.parse(response.body, symbolize_names: true)
+        product_node_response = json_response
         expect(product_node_response).to have_key(:errors)
       end
       # We expect our JSON response to recognize that the error is that the title
       # attribute cannot be blank in order to create a new product node.
       it "renders the json errors on why the product node could not be created" do
-        product_node_response = JSON.parse(response.body, symbolize_names: true)
+        product_node_response = json_response
         expect(product_node_response[:errors][:title]).to include "can't be blank"
       end
       # We expect a 422 response, meaning that something went wrong.
@@ -77,7 +77,7 @@ describe Api::V1::ProductNodesController do
       end
       # We expect the JSON response to contain the new title of the product node.
       it "renders the json representation for the updated product" do
-        product_node_response = JSON.parse(response.body, symbolize_names: true)
+        product_node_response = json_response
         expect(product_node_response[:product_nodes][:title]).to eql "The newest and biggest TV!"
       end
       # We expect a 200 response, meaning that everything went okay.
@@ -94,13 +94,13 @@ describe Api::V1::ProductNodesController do
       end
       # We expect our JSON to state that we have errors.
       it "renders an errors json" do
-        product_node_response = JSON.parse(response.body, symbolize_names: true)
+        product_node_response = json_response
         expect(product_node_response).to have_key(:errors)
       end
       # We expect our JSON response to recognize that the error that was made was
       # tha the title for the product node cannot be blank.
       it "renders the json errors on why the product could not be updated" do
-        product_node_response = JSON.parse(response.body, symbolize_names: true)
+        product_node_response = json_response
         expect(product_node_response[:errors][:title]).to include "can't be blank"
       end
       # We expect a 422 response, meaning that something went wrong.

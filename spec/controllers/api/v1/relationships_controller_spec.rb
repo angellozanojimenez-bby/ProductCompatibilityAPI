@@ -20,7 +20,7 @@ describe Api::V1::RelationshipsController do
     # We expect our JSON response to contain the primary node sku which was
     # just created.
     it "returns the information of a relationship on a hash" do
-      relationship_response = JSON.parse(response.body, symbolize_names: true)
+      relationship_response = json_response
       expect(relationship_response[:relationships][:primary_node_sku]).to eql @product_node_one.sku
     end
     # We expect a 201 response meaning that everything went well and the Relationship was created.
@@ -44,7 +44,7 @@ describe Api::V1::RelationshipsController do
       # We expect our JSON response to contain the primary node sku which was
       # just created.
       it "renders the json representation for the relationship just created" do
-        relationship_response = JSON.parse(response.body, symbolize_names: true)
+        relationship_response = json_response
         expect(relationship_response[:relationships][:primary_node_sku]).to eql @product_node_one.sku
       end
       # We expect a 201 response meaning that everything went well and the Relationship was created.
@@ -64,13 +64,13 @@ describe Api::V1::RelationshipsController do
       end
       # We expect our JSON response to catch that we have errors.
       it "renders an errors json" do
-        relationship_response = JSON.parse(response.body, symbolize_names: true)
+        relationship_response = json_response
         expect(relationship_response).to have_key(:errors)
       end
       # We expect our JSON response to recognize that the error is that the employee
       # number attribute cannot be blank in order to create a new relationship.
       it "renders the json errors on why the relationship could not be created" do
-        relationship_response = JSON.parse(response.body, symbolize_names: true)
+        relationship_response = json_response
         expect(relationship_response[:errors][:employee_number]).to include "can't be blank"
       end
       # We expect a 422 response, meaning that something went wrong.
@@ -94,7 +94,7 @@ describe Api::V1::RelationshipsController do
       end
       # We expect our JSON response to include our newly updated employee number.
       it "renders the json representation for the updated relationship" do
-        relationship_response = JSON.parse(response.body, symbolize_names: true)
+        relationship_response = json_response
         expect(relationship_response[:relationships][:employee_number]).to eql 11991199
       end
       # We expect a 200 response, meaning that everything went well.
@@ -113,13 +113,13 @@ describe Api::V1::RelationshipsController do
       end
       # We expect our JSON response to catch that we have errors.
       it "renders an errors json" do
-        relationship_response = JSON.parse(response.body, symbolize_names: true)
+        relationship_response = json_response
         expect(relationship_response).to have_key(:errors)
       end
       # We expect our JSON response to recognize that our errors are coming from the
       # employee number being nil or blank.
       it "renders the json errors on why the relationship could not be updated" do
-        relationship_response = JSON.parse(response.body, symbolize_names: true)
+        relationship_response = json_response
         expect(relationship_response[:errors][:employee_number]).to include "can't be blank"
       end
       # We expect a 422 response, meaning something went wrong.
