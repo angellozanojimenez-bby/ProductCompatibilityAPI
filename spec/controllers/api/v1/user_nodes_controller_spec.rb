@@ -15,7 +15,7 @@ describe Api::V1::UserNodesController do
     # We expect our JSON response to contain the email of the user node which
     # was just created.
     it "returns the information of a user on a hash" do
-      user_node_response = JSON.parse(response.body, symbolize_names: true)
+      user_node_response = json_response
       expect(user_node_response[:user_nodes][:email]).to eql @user_node.email
     end
     # We expect a 200 response, meaning that everything was successful.
@@ -35,7 +35,7 @@ describe Api::V1::UserNodesController do
       # We expect our JSON response to contain the same email that was created
       # by FactoryGirl and we check to see if they match.
       it "renders the json representation for the user node record just created" do
-        user_node_response = JSON.parse(response.body, symbolize_names: true)
+        user_node_response = json_response
         expect(user_node_response[:user_nodes][:email]).to eql @user_node_attributes[:email]
       end
       # In this instance, we expect a 201 response meaning that the object was successfully
@@ -54,13 +54,13 @@ describe Api::V1::UserNodesController do
       end
       # We expect our JSON response to state that we have errors.
       it "renders an errors json" do
-        user_node_response = JSON.parse(response.body, symbolize_names: true)
+        user_node_response = json_response
         expect(user_node_response).to have_key(:errors)
       end
       # We expect our JSON response to state that the error was that the email
       # address for the user node cannot be blank.
       it "renders the json errors on why the user node could not be created" do
-        user_node_response = JSON.parse(response.body, symbolize_names: true)
+        user_node_response = json_response
         expect(user_node_response[:errors][:email]).to include "can't be blank"
       end
       # We expect our JSON to contain a 422 response which means that something went wrong.
@@ -81,7 +81,7 @@ describe Api::V1::UserNodesController do
       # In this instance, we expect that our update was successful and that our JSON
       # response will contain the new email of the user node.
       it "renders the json representation for the updated user" do
-        user_node_response = JSON.parse(response.body, symbolize_names: true)
+        user_node_response = json_response
         expect(user_node_response[:user_nodes][:email]).to eql "mynewemail@bestbuy.com"
       end
       # We should respond with a 200 that everything went okay.
@@ -98,13 +98,13 @@ describe Api::V1::UserNodesController do
       end
       # We expect our JSON response to say that there has been an error with the email.
       it "renders an errors json" do
-        user_node_response = JSON.parse(response.body, symbolize_names: true)
+        user_node_response = json_response
         expect(user_node_response).to have_key(:errors)
       end
       # We expect the JSON response to contain that the error was that the email
       # cannot be blank for the given email attribute.
       it "renders the json errors on why the user could not be updated" do
-        user_node_response = JSON.parse(response.body, symbolize_names: true)
+        user_node_response = json_response
         expect(user_node_response[:errors][:email]).to include "can't be blank"
       end
       # We expect a 422 response.
