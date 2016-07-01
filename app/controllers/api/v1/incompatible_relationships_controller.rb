@@ -59,6 +59,6 @@ class Api::V1::IncompatibleRelationshipsController < ApplicationController
   private
 
     def relationship_params
-      params.require(:IncompatibleRelationships).permit(:primary_node_sku, :secondary_node_sku, :employee_number, :notes)
+      params.require(:incompatible_relationships).permit(:primary_node_sku, :secondary_node_sku, :employee_number, :notes)
     end
 end
