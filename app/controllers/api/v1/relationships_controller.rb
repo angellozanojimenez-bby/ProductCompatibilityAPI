@@ -1,3 +1,5 @@
+require 'httparty'
+
 class Api::V1::RelationshipsController < ApplicationController
   respond_to :json
   # These methods take care of handling the creation, showing, updating and deletion
@@ -21,12 +23,14 @@ class Api::V1::RelationshipsController < ApplicationController
     else
       # If not found, create a new Product object. Here, we are using FactoryGirl
       # but later on, we are going to get a JSON object from BBY's API.
-      @product_one = FactoryGirl.create :product_nodes
+      first_product_lookup = bbyApiLookup(relationship.primary_node_sku_or_upc)
+      @product_one = ProductNodes.create(title: first_product_lookup["name"], maker: first_product_lookup["manufacturer"], sku: first_product_lookup["sku"], price: first_product_lookup["salePrice"])
     end
     if ProductNodes.find_by(sku: relationship.secondary_node_sku_or_upc)
       @product_two = ProductNodes.find_by(sku: relationship.secondary_node_sku_or_upc)
     else
-      @product_two = FactoryGirl.create :product_nodes
+      second_product_lookup = bbyApiLookup(relationship.secondary_node_sku_or_upc)
+      @product_two = ProductNodes.create(title: second_product_lookup["name"], maker: second_product_lookup["manufacturer"], sku: second_product_lookup["sku"], price: second_product_lookup["salePrice"])
     end
     # Create relationship in database.
     relationship = Relationships.create(from_node: @product_one, to_node: @product_two,
@@ -54,6 +58,18 @@ class Api::V1::RelationshipsController < ApplicationController
     relationship = Relationships.find(params[:id])
     relationship.destroy
     head 204
+  end
+
+  def bbyApiLookup(sku_or_upc)
+    if sku_or_upc.to_s.length < 10
+      api_url = "https://api.bestbuy.com/v1/products(sku='#{sku_or_upc}')?apiKey=3nmxuf48rjc2jhxz7cwebcze&sort=name.asc&show=name,manufacturer,sku,salePrice&format=json"
+      response = HTTParty.get(api_url)
+      return response.parsed_response["products"].first
+    else
+      api_url = "https://api.bestbuy.com/v1/products(upc='#{sku_or_upc}')?apiKey=3nmxuf48rjc2jhxz7cwebcze&sort=name.asc&show=name,manufacturer,sku,salePrice&format=json"
+      response = HTTParty.get(api_url)
+      return response.parsed_response["products"].first
+    end
   end
 
   private
