@@ -13,7 +13,7 @@ describe Api::V1::IncompatibleRelationshipsController do
       @product_node_one = FactoryGirl.create :product_nodes
       @product_node_two = FactoryGirl.create :product_nodes
       @relationship = IncompatibleRelationships.create(from_node: @product_node_one, to_node: @product_node_two,
-      employee_number: 1197566, primary_node_sku_or_upc: @product_node_one.sku, secondary_node_sku_or_upc: @product_node_two.sku,
+      employee_number: 1197566, primary_node_sku: @product_node_one.sku, secondary_node_sku: @product_node_two.sku,
       notes: "These two products work amazing together!")
       get :show, id: @relationship.id, format: :json
     end
@@ -21,7 +21,7 @@ describe Api::V1::IncompatibleRelationshipsController do
     # just created.
     it "returns the information of a relationship on a hash" do
       relationship_response = json_response
-      expect(relationship_response[:incompatible_relationships][:primary_node_sku_or_upc]).to eql @product_node_one.sku
+      expect(relationship_response[:incompatible_relationships][:primary_node_sku]).to eql @product_node_one.sku
     end
     # We expect a 201 response meaning that everything went well and the Relationship was created.
     it { should respond_with 200 }
@@ -37,7 +37,7 @@ describe Api::V1::IncompatibleRelationshipsController do
         @product_node_one = FactoryGirl.create :product_nodes
         @product_node_two = FactoryGirl.create :product_nodes
         @relationship_attributes = { from_node: @product_node_one, to_node: @product_node_two,
-        employee_number: 1197566, primary_node_sku_or_upc: @product_node_one.sku, secondary_node_sku_or_upc: @product_node_two.sku,
+        employee_number: 1197566, primary_node_sku: @product_node_one.sku, secondary_node_sku: @product_node_two.sku,
         notes: "These two products work amazing together!"}
         post :create, { incompatible_relationships: @relationship_attributes }, format: :json
       end
@@ -45,7 +45,7 @@ describe Api::V1::IncompatibleRelationshipsController do
       # just created.
       it "renders the json representation for the relationship just created" do
         relationship_response = json_response
-        expect(relationship_response[:incompatible_relationships][:primary_node_sku_or_upc]).to eql @product_node_one.sku
+        expect(relationship_response[:incompatible_relationships][:primary_node_sku]).to eql @product_node_one.sku
       end
       # We expect a 201 response meaning that everything went well and the Relationship was created.
       it { should respond_with 201 }
@@ -58,7 +58,7 @@ describe Api::V1::IncompatibleRelationshipsController do
         @product_node_one = FactoryGirl.create :product_nodes
         @product_node_two = FactoryGirl.create :product_nodes
         @invalid_relationship_attributes = { from_node: @product_node_one, to_node: @product_node_two,
-        primary_node_sku_or_upc: @product_node_one.sku, secondary_node_sku_or_upc: @product_node_two.sku,
+        primary_node_sku: @product_node_one.sku, secondary_node_sku: @product_node_two.sku,
         notes: "These two products work amazing together!"}
         post :create, { incompatible_relationships: @invalid_relationship_attributes }, format: :json
       end
@@ -88,7 +88,7 @@ describe Api::V1::IncompatibleRelationshipsController do
         @product_node_one = FactoryGirl.create :product_nodes
         @product_node_two = FactoryGirl.create :product_nodes
         @relationship = IncompatibleRelationships.create(from_node: @product_node_one, to_node: @product_node_two,
-        employee_number: 1197566, primary_node_sku_or_upc: @product_node_one.sku, secondary_node_sku_or_upc: @product_node_two.sku,
+        employee_number: 1197566, primary_node_sku: @product_node_one.sku, secondary_node_sku: @product_node_two.sku,
         notes: "These two products work amazing together!")
         patch :update, { id: @relationship.id, incompatible_relationships: { employee_number: 11991199 } }, format: :json
       end
@@ -107,7 +107,7 @@ describe Api::V1::IncompatibleRelationshipsController do
         @product_node_one = FactoryGirl.create :product_nodes
         @product_node_two = FactoryGirl.create :product_nodes
         @relationship = IncompatibleRelationships.create(from_node: @product_node_one, to_node: @product_node_two,
-        employee_number: 1197566, primary_node_sku_or_upc: @product_node_one.sku, secondary_node_sku_or_upc: @product_node_two.sku,
+        employee_number: 1197566, primary_node_sku: @product_node_one.sku, secondary_node_sku: @product_node_two.sku,
         notes: "These two products work amazing together!")
         patch :update, { id: @relationship.id, incompatible_relationships: { employee_number: nil } }, format: :json
       end
@@ -135,7 +135,7 @@ describe Api::V1::IncompatibleRelationshipsController do
       @product_node_one = FactoryGirl.create :product_nodes
       @product_node_two = FactoryGirl.create :product_nodes
       @relationship = IncompatibleRelationships.create(from_node: @product_node_one, to_node: @product_node_two,
-      employee_number: 1197566, primary_node_sku_or_upc: @product_node_one.sku, secondary_node_sku_or_upc: @product_node_two.sku,
+      employee_number: 1197566, primary_node_sku: @product_node_one.sku, secondary_node_sku: @product_node_two.sku,
       notes: "These two products work amazing together!")
       delete :destroy, { id: @relationship.id }, format: :json
     end
