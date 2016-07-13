@@ -197,6 +197,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   ffaker
+  httparty
   jbuilder (~> 1.2)
   jquery-rails
   neo4j
