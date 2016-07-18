@@ -11,6 +11,7 @@ class Api::V1::RelationshipsController < ApplicationController
   def show
     respond_with Relationships.find(params[:id])
   end
+
   # This Relationship is a bit more complicated than your regular create.
   def create
     # In the Relationship model, we take a regular Relationships object and we
