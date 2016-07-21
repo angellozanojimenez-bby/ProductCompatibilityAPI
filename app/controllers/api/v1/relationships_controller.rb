@@ -19,16 +19,16 @@ class Api::V1::RelationshipsController < ApplicationController
     relationship = Relationships.new(relationship_params)
     # From the params passed, we take the primary node sku and we check if there's
     # already a Product node with that sku.
-    if ProductNodes.find_by(sku: relationship.primary_node_sku_or_upc)
-      @product_one = ProductNodes.find_by(sku: relationship.primary_node_sku_or_upc)
+    if ProductNodes.find_by(sku: relationship.primary_node_sku)
+      @product_one = ProductNodes.find_by(sku: relationship.primary_node_sku)
     else
       # If not found, create a new Product object. Here, we are using FactoryGirl
       # but later on, we are going to get a JSON object from BBY's API.
       first_product_lookup = bbyApiLookup(relationship.primary_node_sku_or_upc)
       @product_one = ProductNodes.create(title: first_product_lookup["name"], maker: first_product_lookup["manufacturer"], sku: first_product_lookup["sku"], price: first_product_lookup["salePrice"])
     end
-    if ProductNodes.find_by(sku: relationship.secondary_node_sku_or_upc)
-      @product_two = ProductNodes.find_by(sku: relationship.secondary_node_sku_or_upc)
+    if ProductNodes.find_by(sku: relationship.secondary_node_sku)
+      @product_two = ProductNodes.find_by(sku: relationship.secondary_node_sku)
     else
       second_product_lookup = bbyApiLookup(relationship.secondary_node_sku_or_upc)
       @product_two = ProductNodes.create(title: second_product_lookup["name"], maker: second_product_lookup["manufacturer"], sku: second_product_lookup["sku"], price: second_product_lookup["salePrice"])
@@ -36,7 +36,7 @@ class Api::V1::RelationshipsController < ApplicationController
     # Create relationship in database.
     relationship = Relationships.create(from_node: @product_one, to_node: @product_two,
     employee_number: relationship.employee_number, notes: relationship.notes,
-    primary_node_sku_or_upc: @product_one.sku, secondary_node_sku_or_upc: @product_two.sku)
+    primary_node_sku: @product_one.sku, secondary_node_sku: @product_two.sku)
     # Return the JSON object for the relationship saved.
     if relationship.save
       render json: relationship, status: 201, location: [:api, relationship]
@@ -76,6 +76,6 @@ class Api::V1::RelationshipsController < ApplicationController
   private
 
     def relationship_params
-      params.require(:relationships).permit(:primary_node_sku_or_upc, :secondary_node_sku_or_upc, :employee_number, :notes)
+      params.require(:relationships).permit(:primary_node_sku, :secondary_node_sku, :employee_number, :notes)
     end
 end
