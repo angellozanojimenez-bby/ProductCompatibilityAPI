@@ -1,5 +1,5 @@
 require 'httparty'
-
+# Relationships are Compatible Relationships.
 class Api::V1::RelationshipsController < ApplicationController
   respond_to :json
   # These methods take care of handling the creation, showing, updating and deletion
@@ -12,6 +12,9 @@ class Api::V1::RelationshipsController < ApplicationController
     respond_with Relationships.find(params[:id])
   end
 
+  def show_by_product
+    respond_with Relationships.where(primary_node_sku: params[:primary_node_sku].to_i)
+  end
   # This Relationship is a bit more complicated than your regular create.
   def create
     # In the Relationship model, we take a regular Relationships object and we
@@ -24,13 +27,14 @@ class Api::V1::RelationshipsController < ApplicationController
     else
       # If not found, create a new Product object. Here, we are using FactoryGirl
       # but later on, we are going to get a JSON object from BBY's API.
-      first_product_lookup = bbyApiLookup(relationship.primary_node_sku_or_upc)
+      first_product_lookup = bbyApiLookup(relationship.primary_node_sku)
       @product_one = ProductNodes.create(title: first_product_lookup["name"], maker: first_product_lookup["manufacturer"], sku: first_product_lookup["sku"], price: first_product_lookup["salePrice"])
     end
+
     if ProductNodes.find_by(sku: relationship.secondary_node_sku)
       @product_two = ProductNodes.find_by(sku: relationship.secondary_node_sku)
     else
-      second_product_lookup = bbyApiLookup(relationship.secondary_node_sku_or_upc)
+      second_product_lookup = bbyApiLookup(relationship.secondary_node_sku)
       @product_two = ProductNodes.create(title: second_product_lookup["name"], maker: second_product_lookup["manufacturer"], sku: second_product_lookup["sku"], price: second_product_lookup["salePrice"])
     end
     # Create relationship in database.
