@@ -1,4 +1,4 @@
-class Api::V1::ProductNodesController < ApplicationController
+class ProductNodesController < ApplicationController
   respond_to :json
   # These methods take care of handling the creation, showing, updating and deletion
   # of the product nodes in Neo4j.

@@ -1,6 +1,6 @@
 require 'httparty'
 
-class Api::V1::IncompatibleRelationshipsController < ApplicationController
+class IncompatibleRelationshipsController < ApplicationController
   respond_to :json
   # These methods take care of handling the creation, showing, updating and deletion
   # of the IncompatibleRelationships in Neo4j.

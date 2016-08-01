@@ -1,6 +1,6 @@
 require 'httparty'
 # Relationships are Compatible Relationships.
-class Api::V1::RelationshipsController < ApplicationController
+class RelationshipsController < ApplicationController
   respond_to :json
   # These methods take care of handling the creation, showing, updating and deletion
   # of the relationships in Neo4j.
