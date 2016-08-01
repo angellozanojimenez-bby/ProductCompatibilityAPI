@@ -13,7 +13,7 @@ class ProductNodesController < ApplicationController
   def create
     product_node = ProductNodes.new(product_node_params)
     if product_node.save
-      render json: product_node, status: 201, location: [:api, product_node]
+      render json: product_node, status: 201
     else
       render json: { errors: product_node.errors }, status: 422
     end
@@ -22,7 +22,7 @@ class ProductNodesController < ApplicationController
   def update
     product_node = ProductNodes.find(params[:id])
     if product_node.update(product_node_params)
-      render json: product_node, status: 200, location: [:api, product_node]
+      render json: product_node, status: 200
     else
       render json: { errors: product_node.errors }, status: 422
     end

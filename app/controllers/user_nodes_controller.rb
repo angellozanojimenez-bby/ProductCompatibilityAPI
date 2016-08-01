@@ -13,7 +13,7 @@ class UserNodesController < ApplicationController
   def create
     user_node = UserNodes.new(user_node_params)
     if user_node.save
-      render json: user_node, status: 201, location: [:api, user_node]
+      render json: user_node, status: 201
     else
       render json: { errors: user_node.errors }, status: 422
     end
@@ -22,7 +22,7 @@ class UserNodesController < ApplicationController
   def update
     user_node = UserNodes.find(params[:id])
     if user_node.update(user_node_params)
-      render json: user_node, status: 200, location: [:api, user_node]
+      render json: user_node, status: 200
     else
       render json: { errors: user_node.errors }, status: 422
     end

@@ -43,7 +43,7 @@ class IncompatibleRelationshipsController < ApplicationController
     primary_node_sku: @product_one.sku, secondary_node_sku: @product_two.sku)
     # Return the JSON object for the relationship saved.
     if relationship.save
-      render json: relationship, status: 201, location: [:api, relationship]
+      render json: relationship, status: 201
     else
       render json: { errors: relationship.errors }, status: 422
     end
@@ -54,7 +54,7 @@ class IncompatibleRelationshipsController < ApplicationController
   def update
     relationship = IncompatibleRelationships.find(params[:id])
     if relationship.update(relationship_params)
-      render json: relationship, status: 200, location: [:api, relationship]
+      render json: relationship, status: 200
     else
       render json: { errors: relationship.errors }, status: 422
     end
