@@ -22,6 +22,16 @@ class RelationshipsController < ApplicationController
     relationship = Relationships.new(relationship_params)
     # From the params passed, we take the primary node sku and we check if there's
     # already a Product node with that sku.
+    if relationship.primary_node_sku.to_s.length > 10
+      correct_product_info = bbyApiLookup(relationship.primary_node_sku)
+      relationship.primary_node_sku = correct_product_info["sku"]
+    end
+
+    if relationship.secondary_node_sku.to_s.length > 10
+      correct_product_info = bbyApiLookup(relationship.secondary_node_sku)
+      relationship.secondary_node_sku = correct_product_info["sku"]
+    end
+
     if ProductNodes.find_by(sku: relationship.primary_node_sku)
       @product_one = ProductNodes.find_by(sku: relationship.primary_node_sku)
     else
