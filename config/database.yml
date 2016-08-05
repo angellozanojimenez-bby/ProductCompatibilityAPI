@@ -5,4 +5,12 @@
 #   gem 'sqlite3'
 development:
   type: server_db
-  url: http://40.77.61.2:7474
+  url: http://40.77.61.29:7474
+  pool: 5
+  timeout: 5000
+
+test:
+  type: server_db
+  database: http://40.77.61.29:7475
+  pool: 5
+  timeout: 5000
