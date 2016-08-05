@@ -27,5 +27,5 @@ Productcompatibilityapi::Application.configure do
   # number of complex assets.
   config.assets.debug = true
   config.neo4j.session_type = :server_db
-  config.neo4j.session_path = 'http://localhost:7474'
+  config.neo4j.session_path = 'http://40.77.61.2:7474'
 end
