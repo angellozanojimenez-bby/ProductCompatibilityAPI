@@ -12,4 +12,5 @@ Productcompatibilityapi::Application.routes.draw do
   # These are the routes that redirect to single product lookup through SKUs.
   get '/compatible_product_relationships/:primary_node_sku', to: 'relationships#show_by_product', :defaults => { :format => 'json' }
   get '/incompatible_product_relationships/:primary_node_sku', to: 'incompatible_relationships#show_by_product', :defaults => { :format => 'json' }
+  get '/users', to: 'user_nodes#show_by_email', :defaults => { :format => 'json' }
 end

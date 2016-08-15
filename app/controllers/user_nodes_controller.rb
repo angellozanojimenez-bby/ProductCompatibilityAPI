@@ -34,6 +34,10 @@ class UserNodesController < ApplicationController
     head 204
   end
 
+  def show_by_email
+    respond_with UserNodes.find_by(email: params[:email])
+  end
+
   private
 
     def user_node_params
